@@ -23,6 +23,11 @@
                 var myObj = { "Name": $scope.Name, "Age": $scope.Age, "Height": $scope.Height, "CNIC": $scope.CNIC };
                 console.log(myObj);
                 $http.post(API_URL, myObj).then(function (result) {
+                    Swal.fire(
+                            'Good job!',
+                            'Record Has been inserted!',
+                            'success'
+                        )
                     $http.get(API_URL)
                     .then(function (result) {
                         $scope.personList = result.data;
@@ -33,7 +38,12 @@
                 const DEL_URL = API_URL+"/"+id;
                 $http.delete(DEL_URL)
                     .then(function (result) {
-                        $http.get(API_URL)
+                        Swal.fire(
+                            'Good job!',
+                            'Record Has been deleted!',
+                            'success'
+                        )
+                    $http.get(API_URL)
                     .then(function (result) {
                         $scope.personList = result.data;
                     })
