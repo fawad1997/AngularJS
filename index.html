@@ -24,7 +24,10 @@
                 var myObj = { "Name": $scope.Name, "Age": $scope.Age, "Height": $scope.Height, "CNIC": $scope.CNIC };
                 console.log(myObj);
                 $http.post(API_URL, myObj).then(function (result) {
-                    //alert("Success");
+                    $http.get(API_URL)
+                    .then(function (result) {
+                        $scope.personList = result.data;
+                    })
                 })
             }
         });
